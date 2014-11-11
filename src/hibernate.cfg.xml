@@ -4,8 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="show_sql">true</property>
         <property name="connection.url">jdbc:mysql://61.128.177.92:3306/lline</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">info</property>
+        <property name="connection.password">fldx72228501</property>
+
         <mapping resource="com/flnoc/LeasedLine/Model/CommRoom.hbm.xml"/>
         <mapping class="com.flnoc.LeasedLine.Model.CommRoom"/>
         <mapping resource="com/flnoc/LeasedLine/Model/Device.hbm.xml"/>

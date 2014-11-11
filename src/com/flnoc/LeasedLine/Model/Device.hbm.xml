@@ -35,9 +35,6 @@
         <property name="deviceInternetVlan">
             <column name="deviceInternetVLAN" sql-type="varchar" length="4"/>
         </property>
-        <property name="commRoomId">
-            <column name="commRoomID" sql-type="int" not-null="true"/>
-        </property>
         <property name="deviceMemo">
             <column name="deviceMemo" sql-type="text" length="65535"/>
         </property>

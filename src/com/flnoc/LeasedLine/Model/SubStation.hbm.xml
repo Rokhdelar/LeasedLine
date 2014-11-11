@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.flnoc.LeasedLine.Model.SubStation" table="subStation" schema="" catalog="lline">
+    <class name="com.flnoc.LeasedLine.Model.SubStation" table="subStation">
         <id name="subId">
             <column name="subID" sql-type="int" not-null="true"/>
         </id>

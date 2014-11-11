@@ -17,7 +17,6 @@ public class Device {
     private String deviceBras;
     private String deviceBrasport;
     private String deviceInternetVlan;
-    private int commRoomId;
     private String deviceMemo;
     private CommRoom commRoomByCommRoomId;
 
@@ -122,16 +121,6 @@ public class Device {
     }
 
     @Basic
-    @Column(name = "commRoomID", nullable = false, insertable = true, updatable = true)
-    public int getCommRoomId() {
-        return commRoomId;
-    }
-
-    public void setCommRoomId(int commRoomId) {
-        this.commRoomId = commRoomId;
-    }
-
-    @Basic
     @Column(name = "deviceMemo", nullable = true, insertable = true, updatable = true, length = 65535)
     public String getDeviceMemo() {
         return deviceMemo;
@@ -148,7 +137,6 @@ public class Device {
 
         Device device = (Device) o;
 
-        if (commRoomId != device.commRoomId) return false;
         if (deviceId != device.deviceId) return false;
         if (deviceBras != null ? !deviceBras.equals(device.deviceBras) : device.deviceBras != null) return false;
         if (deviceBrasport != null ? !deviceBrasport.equals(device.deviceBrasport) : device.deviceBrasport != null)
@@ -180,7 +168,6 @@ public class Device {
         result = 31 * result + (deviceBras != null ? deviceBras.hashCode() : 0);
         result = 31 * result + (deviceBrasport != null ? deviceBrasport.hashCode() : 0);
         result = 31 * result + (deviceInternetVlan != null ? deviceInternetVlan.hashCode() : 0);
-        result = 31 * result + commRoomId;
         result = 31 * result + (deviceMemo != null ? deviceMemo.hashCode() : 0);
         return result;
     }

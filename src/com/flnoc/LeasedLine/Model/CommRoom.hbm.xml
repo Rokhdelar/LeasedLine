@@ -11,9 +11,6 @@
         <property name="commRoomName">
             <column name="commRoomName" sql-type="varchar" length="50" not-null="true"/>
         </property>
-        <property name="subId">
-            <column name="subID" sql-type="int" not-null="true"/>
-        </property>
         <property name="commRoomAddress">
             <column name="commRoomAddress" sql-type="varchar" length="100"/>
         </property>

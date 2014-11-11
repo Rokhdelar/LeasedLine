@@ -10,7 +10,6 @@ import java.util.Collection;
 public class CommRoom {
     private int commRoomId;
     private String commRoomName;
-    private int subId;
     private String commRoomAddress;
     private String commRoomContact;
     private String commRoomPhone;
@@ -36,16 +35,6 @@ public class CommRoom {
 
     public void setCommRoomName(String commRoomName) {
         this.commRoomName = commRoomName;
-    }
-
-    @Basic
-    @Column(name = "subID", nullable = false, insertable = true, updatable = true)
-    public int getSubId() {
-        return subId;
-    }
-
-    public void setSubId(int subId) {
-        this.subId = subId;
     }
 
     @Basic
@@ -96,7 +85,6 @@ public class CommRoom {
         CommRoom commRoom = (CommRoom) o;
 
         if (commRoomId != commRoom.commRoomId) return false;
-        if (subId != commRoom.subId) return false;
         if (commRoomAddress != null ? !commRoomAddress.equals(commRoom.commRoomAddress) : commRoom.commRoomAddress != null)
             return false;
         if (commRoomContact != null ? !commRoomContact.equals(commRoom.commRoomContact) : commRoom.commRoomContact != null)
@@ -115,7 +103,6 @@ public class CommRoom {
     public int hashCode() {
         int result = commRoomId;
         result = 31 * result + (commRoomName != null ? commRoomName.hashCode() : 0);
-        result = 31 * result + subId;
         result = 31 * result + (commRoomAddress != null ? commRoomAddress.hashCode() : 0);
         result = 31 * result + (commRoomContact != null ? commRoomContact.hashCode() : 0);
         result = 31 * result + (commRoomPhone != null ? commRoomPhone.hashCode() : 0);

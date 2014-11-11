@@ -1,5 +1,8 @@
 package com.flnoc.LeasedLine.Model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -9,12 +12,37 @@ import java.util.Collection;
 @Entity
 public class SubStation {
     private int subId;
-    private String subName;
-    private String subLeader;
-    private String subPhone;
-    private String subMemo;
+    private StringProperty subName;
+    //private String subName;
+    private StringProperty subLeader;
+    //private String subLeader;
+    private StringProperty subPhone;
+    //private String subPhone;
+    private StringProperty subMemo;
+    //private String subMemo;
     private Collection<CommRoom> commRoomsBySubId;
 
+    @Override
+    public String toString() {
+        return "SubStation{" +
+                "subId=" + subId +
+                ", subName=" + subName.get() +
+                ", subLeader=" + subLeader.get() +
+                ", subPhone=" + subPhone.get() +
+                ", subMemo=" + subMemo.get() +
+                '}';
+    }
+
+    public SubStation(){
+        this(null);
+    }
+
+    public SubStation(String subName){
+        this.subName=new SimpleStringProperty(subName);
+        this.subLeader=new SimpleStringProperty();
+        this.subPhone=new SimpleStringProperty();
+        this.subMemo=new SimpleStringProperty();
+    }
     @Id
     @Column(name = "subID", nullable = false, insertable = true, updatable = true)
     public int getSubId() {
@@ -28,41 +56,57 @@ public class SubStation {
     @Basic
     @Column(name = "subName", nullable = false, insertable = true, updatable = true, length = 20)
     public String getSubName() {
-        return subName;
+        return subName.get();
     }
 
     public void setSubName(String subName) {
-        this.subName = subName;
+        this.subName.set(subName);
+    }
+
+    public StringProperty subNameProperty(){
+        return this.subName;
     }
 
     @Basic
     @Column(name = "subLeader", nullable = true, insertable = true, updatable = true, length = 10)
     public String getSubLeader() {
-        return subLeader;
+        return subLeader.get();
     }
 
     public void setSubLeader(String subLeader) {
-        this.subLeader = subLeader;
+        this.subLeader.set(subLeader);
+    }
+
+    public StringProperty subLeader(){
+        return this.subLeader;
     }
 
     @Basic
     @Column(name = "subPhone", nullable = true, insertable = true, updatable = true, length = 20)
     public String getSubPhone() {
-        return subPhone;
+        return subPhone.get();
     }
 
     public void setSubPhone(String subPhone) {
-        this.subPhone = subPhone;
+        this.subPhone.set(subPhone);
+    }
+
+    public StringProperty subPhoneProperty(){
+        return subPhone;
     }
 
     @Basic
     @Column(name = "subMemo", nullable = true, insertable = true, updatable = true, length = 65535)
     public String getSubMemo() {
-        return subMemo;
+        return subMemo.get();
     }
 
     public void setSubMemo(String subMemo) {
-        this.subMemo = subMemo;
+        this.subMemo.set(subMemo);
+    }
+
+    public StringProperty subMemo(){
+        return subMemo;
     }
 
     @Override
