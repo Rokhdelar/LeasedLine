@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.flnoc.LeasedLine.Model.CommRoom" table="commRoom" schema="" catalog="lline">
+        <id name="commRoomId">
+            <column name="commRoomID" sql-type="int" not-null="true"/>
+        </id>
+        <property name="commRoomName">
+            <column name="commRoomName" sql-type="varchar" length="50" not-null="true"/>
+        </property>
+        <property name="subId">
+            <column name="subID" sql-type="int" not-null="true"/>
+        </property>
+        <property name="commRoomAddress">
+            <column name="commRoomAddress" sql-type="varchar" length="100"/>
+        </property>
+        <property name="commRoomContact">
+            <column name="commRoomContact" sql-type="varchar" length="10"/>
+        </property>
+        <property name="commRoomPhone">
+            <column name="commRoomPhone" sql-type="varchar" length="15"/>
+        </property>
+        <property name="commRoomMemo">
+            <column name="commRoomMemo" sql-type="text" length="65535"/>
+        </property>
+        <many-to-one name="subStationBySubId" class="com.flnoc.LeasedLine.Model.SubStation">
+            <column name="subID" not-null="true"/>
+        </many-to-one>
+        <set name="devicesByCommRoomId" inverse="true">
+            <key>
+                <column name="commRoomID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.flnoc.LeasedLine.Model.Device"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - lline@61.128.177.92" uuid="57c15578-4400-4347-9637-6356cb0c83e7">
+    <database-info product="MySQL" version="5.6.20" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="lline"/>
+    <table name="commRoom" schema="" catalog="lline" type="TABLE">
+      <column name="commRoomID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="commRoomName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="subID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="commRoomAddress" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="commRoomContact" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="commRoomPhone" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="commRoomMemo" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="commRoomID"/>
+      <foreign-key name="FK_SUBID" columns="subID" ref-table="subStation" ref-schema="" ref-catalog="lline" ref-columns="subID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_COMMROOM_ID" table="device" schema="" catalog="lline" columns="commRoomID"/>
+      <index name="FK_SUBID_idx" unique="false" columns="subID"/>
+    </table>
+    <table name="device" schema="" catalog="lline" type="TABLE">
+      <column name="deviceID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="deviceName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="deviceIP" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="deviceSNMPRO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="deviceSNMPRW" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="deviceType" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" def="J1NXJw=="/>
+      <column name="deviceModel" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="deviceBRAS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="deviceBRASPORT" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="deviceInternetVLAN" sqlType="VARCHAR" precision="4" scale="0" nullable="true" jdbcType="12"/>
+      <column name="commRoomID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="deviceMemo" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="deviceID"/>
+      <foreign-key name="FK_COMMROOM_ID" columns="commRoomID" ref-table="commRoom" ref-schema="" ref-catalog="lline" ref-columns="commRoomID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_COMMROOM_ID_idx" unique="false" columns="commRoomID"/>
+    </table>
+    <table name="subStation" schema="" catalog="lline" type="TABLE">
+      <column name="subID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="subName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="subLeader" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="subPhone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="subMemo" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="subID"/>
+      <exported-key name="FK_SUBID" table="commRoom" schema="" catalog="lline" columns="subID"/>
+    </table>
+  </data-source>
+</component>

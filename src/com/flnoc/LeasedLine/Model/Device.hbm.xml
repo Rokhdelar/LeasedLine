@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.flnoc.LeasedLine.Model.Device" table="device" schema="" catalog="lline">
+        <id name="deviceId">
+            <column name="deviceID" sql-type="int" not-null="true"/>
+        </id>
+        <property name="deviceName">
+            <column name="deviceName" sql-type="varchar" length="50" not-null="true"/>
+        </property>
+        <property name="deviceIp">
+            <column name="deviceIP" sql-type="varchar" length="20" not-null="true"/>
+        </property>
+        <property name="deviceSnmpro">
+            <column name="deviceSNMPRO" sql-type="varchar" length="20" not-null="true"/>
+        </property>
+        <property name="deviceSnmprw">
+            <column name="deviceSNMPRW" sql-type="varchar" length="20"/>
+        </property>
+        <property name="deviceType">
+            <column name="deviceType" sql-type="varchar" length="10" not-null="true"/>
+        </property>
+        <property name="deviceModel">
+            <column name="deviceModel" sql-type="varchar" length="45"/>
+        </property>
+        <property name="deviceBras">
+            <column name="deviceBRAS" sql-type="varchar" length="45"/>
+        </property>
+        <property name="deviceBrasport">
+            <column name="deviceBRASPORT" sql-type="varchar" length="45"/>
+        </property>
+        <property name="deviceInternetVlan">
+            <column name="deviceInternetVLAN" sql-type="varchar" length="4"/>
+        </property>
+        <property name="commRoomId">
+            <column name="commRoomID" sql-type="int" not-null="true"/>
+        </property>
+        <property name="deviceMemo">
+            <column name="deviceMemo" sql-type="text" length="65535"/>
+        </property>
+        <many-to-one name="commRoomByCommRoomId" class="com.flnoc.LeasedLine.Model.CommRoom">
+            <column name="commRoomID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
