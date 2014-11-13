@@ -77,7 +77,7 @@ public class SubStation {
         this.subLeader.set(subLeader);
     }
 
-    public StringProperty subLeader(){
+    public StringProperty subLeaderProperty(){
         return this.subLeader;
     }
 
@@ -105,7 +105,7 @@ public class SubStation {
         this.subMemo.set(subMemo);
     }
 
-    public StringProperty subMemo(){
+    public StringProperty subMemoProperty(){
         return subMemo;
     }
 

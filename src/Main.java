@@ -1,4 +1,9 @@
 import com.flnoc.LeasedLine.Model.SubStation;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
@@ -13,6 +18,8 @@ import java.util.Map;
 /**
  * Created by Rokhdelar on 2014-11-11.
  */
+
+/*
 public class Main {
     private static final SessionFactory ourSessionFactory;
     private static final ServiceRegistry serviceRegistry;
@@ -50,5 +57,26 @@ public class Main {
         } finally {
             session.close();
         }
+    }
+}
+*/
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        FXMLLoader fxmlLoader=new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/MainAppWindow.fxml"));
+        Parent root=fxmlLoader.load();
+
+        Scene scene=new Scene(root);
+        primaryStage.setTitle("X Tools");
+        primaryStage.setScene(new Scene(root, 1024, 800));
+        //primaryStage.setFullScreen(true);
+        primaryStage.show();
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
