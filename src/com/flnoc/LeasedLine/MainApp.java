@@ -33,7 +33,8 @@ public class MainApp extends Application {
         MainAppWindowController mainAppWindowController=fxmlLoader.getController();
         mainAppWindowController.setMainAppStage(primaryStage);
 
-        Scene scene=new Scene(root,1024,800);
+        Scene scene=new Scene(root,1024,600);
+        primaryStage.centerOnScreen();
         primaryStage.setScene(scene);
         primaryStage.setTitle("X Tools...");
         primaryStage.show();

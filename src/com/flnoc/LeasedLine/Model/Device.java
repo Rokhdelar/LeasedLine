@@ -1,9 +1,10 @@
 package com.flnoc.LeasedLine.Model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * Created by Rokhdelar on 2014-11-11.
+ * Created by Rokhdelar on 2014-11-14.
  */
 @Entity
 public class Device {
@@ -12,6 +13,9 @@ public class Device {
     private String deviceIp;
     private String deviceSnmpro;
     private String deviceSnmprw;
+    private String deviceUserName;
+    private String devicePassword;
+    private String deviceEnablePassword;
     private String deviceType;
     private String deviceModel;
     private String deviceBras;
@@ -19,6 +23,7 @@ public class Device {
     private String deviceInternetVlan;
     private String deviceMemo;
     private CommRoom commRoomByCommRoomId;
+    private Collection<Lline> llinesByDeviceId;
 
     @Id
     @Column(name = "deviceID", nullable = false, insertable = true, updatable = true)
@@ -68,6 +73,36 @@ public class Device {
 
     public void setDeviceSnmprw(String deviceSnmprw) {
         this.deviceSnmprw = deviceSnmprw;
+    }
+
+    @Basic
+    @Column(name = "deviceUserName", nullable = true, insertable = true, updatable = true, length = 20)
+    public String getDeviceUserName() {
+        return deviceUserName;
+    }
+
+    public void setDeviceUserName(String deviceUserName) {
+        this.deviceUserName = deviceUserName;
+    }
+
+    @Basic
+    @Column(name = "devicePassword", nullable = true, insertable = true, updatable = true, length = 20)
+    public String getDevicePassword() {
+        return devicePassword;
+    }
+
+    public void setDevicePassword(String devicePassword) {
+        this.devicePassword = devicePassword;
+    }
+
+    @Basic
+    @Column(name = "deviceEnablePassword", nullable = true, insertable = true, updatable = true, length = 20)
+    public String getDeviceEnablePassword() {
+        return deviceEnablePassword;
+    }
+
+    public void setDeviceEnablePassword(String deviceEnablePassword) {
+        this.deviceEnablePassword = deviceEnablePassword;
     }
 
     @Basic
@@ -141,17 +176,23 @@ public class Device {
         if (deviceBras != null ? !deviceBras.equals(device.deviceBras) : device.deviceBras != null) return false;
         if (deviceBrasport != null ? !deviceBrasport.equals(device.deviceBrasport) : device.deviceBrasport != null)
             return false;
+        if (deviceEnablePassword != null ? !deviceEnablePassword.equals(device.deviceEnablePassword) : device.deviceEnablePassword != null)
+            return false;
         if (deviceInternetVlan != null ? !deviceInternetVlan.equals(device.deviceInternetVlan) : device.deviceInternetVlan != null)
             return false;
         if (deviceIp != null ? !deviceIp.equals(device.deviceIp) : device.deviceIp != null) return false;
         if (deviceMemo != null ? !deviceMemo.equals(device.deviceMemo) : device.deviceMemo != null) return false;
         if (deviceModel != null ? !deviceModel.equals(device.deviceModel) : device.deviceModel != null) return false;
         if (deviceName != null ? !deviceName.equals(device.deviceName) : device.deviceName != null) return false;
+        if (devicePassword != null ? !devicePassword.equals(device.devicePassword) : device.devicePassword != null)
+            return false;
         if (deviceSnmpro != null ? !deviceSnmpro.equals(device.deviceSnmpro) : device.deviceSnmpro != null)
             return false;
         if (deviceSnmprw != null ? !deviceSnmprw.equals(device.deviceSnmprw) : device.deviceSnmprw != null)
             return false;
         if (deviceType != null ? !deviceType.equals(device.deviceType) : device.deviceType != null) return false;
+        if (deviceUserName != null ? !deviceUserName.equals(device.deviceUserName) : device.deviceUserName != null)
+            return false;
 
         return true;
     }
@@ -163,6 +204,9 @@ public class Device {
         result = 31 * result + (deviceIp != null ? deviceIp.hashCode() : 0);
         result = 31 * result + (deviceSnmpro != null ? deviceSnmpro.hashCode() : 0);
         result = 31 * result + (deviceSnmprw != null ? deviceSnmprw.hashCode() : 0);
+        result = 31 * result + (deviceUserName != null ? deviceUserName.hashCode() : 0);
+        result = 31 * result + (devicePassword != null ? devicePassword.hashCode() : 0);
+        result = 31 * result + (deviceEnablePassword != null ? deviceEnablePassword.hashCode() : 0);
         result = 31 * result + (deviceType != null ? deviceType.hashCode() : 0);
         result = 31 * result + (deviceModel != null ? deviceModel.hashCode() : 0);
         result = 31 * result + (deviceBras != null ? deviceBras.hashCode() : 0);
@@ -180,5 +224,14 @@ public class Device {
 
     public void setCommRoomByCommRoomId(CommRoom commRoomByCommRoomId) {
         this.commRoomByCommRoomId = commRoomByCommRoomId;
+    }
+
+    @OneToMany(mappedBy = "deviceByDeviceId")
+    public Collection<Lline> getLlinesByDeviceId() {
+        return llinesByDeviceId;
+    }
+
+    public void setLlinesByDeviceId(Collection<Lline> llinesByDeviceId) {
+        this.llinesByDeviceId = llinesByDeviceId;
     }
 }

@@ -7,6 +7,14 @@
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="lline"/>
+    <table name="VPN" schema="" catalog="lline" type="TABLE">
+      <column name="VPNID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="VPNName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VPNMainNumber" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VPNMemo" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="VPNID"/>
+      <exported-key name="FK_LLINE_VPNID" table="lline" schema="" catalog="lline" columns="vpnID"/>
+    </table>
     <table name="commRoom" schema="" catalog="lline" type="TABLE">
       <column name="commRoomID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="commRoomName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
@@ -20,12 +28,24 @@
       <exported-key name="FK_COMMROOM_ID" table="device" schema="" catalog="lline" columns="commRoomID"/>
       <index name="FK_SUBID_idx" unique="false" columns="subID"/>
     </table>
+    <table name="customer" schema="" catalog="lline" type="TABLE">
+      <column name="CustomerID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CustomerName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CustomerPhone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CustomerManager" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CustomerMemo" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="CustomerID"/>
+      <exported-key name="FK_LLINE_CUSTOMERID" table="lline" schema="" catalog="lline" columns="customerID"/>
+    </table>
     <table name="device" schema="" catalog="lline" type="TABLE">
       <column name="deviceID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="deviceName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="deviceIP" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <column name="deviceSNMPRO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <column name="deviceSNMPRW" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="deviceUserName" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="devicePassword" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="deviceEnablePassword" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <column name="deviceType" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" def="J1NXJw=="/>
       <column name="deviceModel" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="deviceBRAS" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
@@ -35,7 +55,38 @@
       <column name="deviceMemo" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="deviceID"/>
       <foreign-key name="FK_COMMROOM_ID" columns="commRoomID" ref-table="commRoom" ref-schema="" ref-catalog="lline" ref-columns="commRoomID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_LLINE_DEVICEID" table="lline" schema="" catalog="lline" columns="deviceID"/>
       <index name="FK_COMMROOM_ID_idx" unique="false" columns="commRoomID"/>
+    </table>
+    <table name="lline" schema="" catalog="lline" type="TABLE">
+      <column name="llineID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="llineNumber" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="llineName" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="llineOpticalNumber" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="customerID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="vpnID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="deviceID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="llinePhyPort" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="llineSubPort" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineOutVLAN" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="llineInVLAN" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="llineIP" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineMask" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineGateway" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineBandwidth" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="llineAddress" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineODF" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineContact" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llinePhone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineLineNumber" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="llineMemo" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="llineID"/>
+      <foreign-key name="FK_LLINE_CUSTOMERID" columns="customerID" ref-table="customer" ref-schema="" ref-catalog="lline" ref-columns="CustomerID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_LLINE_DEVICEID" columns="deviceID" ref-table="device" ref-schema="" ref-catalog="lline" ref-columns="deviceID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_LLINE_VPNID" columns="vpnID" ref-table="VPN" ref-schema="" ref-catalog="lline" ref-columns="VPNID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_LLINE_CUSTOMERID_idx" unique="false" columns="customerID"/>
+      <index name="FK_LLINE_DEVICEID_idx" unique="false" columns="deviceID"/>
+      <index name="FK_LLINE_VPNID_idx" unique="false" columns="vpnID"/>
     </table>
     <table name="subStation" schema="" catalog="lline" type="TABLE">
       <column name="subID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

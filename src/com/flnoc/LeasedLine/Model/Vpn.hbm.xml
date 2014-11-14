@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.flnoc.LeasedLine.Model.Vpn" table="VPN" schema="" catalog="lline">
+        <id name="vpnid">
+            <column name="VPNID" sql-type="int" not-null="true"/>
+        </id>
+        <property name="vpnName">
+            <column name="VPNName" sql-type="varchar" length="100" not-null="true"/>
+        </property>
+        <property name="vpnMainNumber">
+            <column name="VPNMainNumber" sql-type="varchar" length="20" not-null="true"/>
+        </property>
+        <property name="vpnMemo">
+            <column name="VPNMemo" sql-type="mediumtext" length="16777215"/>
+        </property>
+        <set name="llinesByVpnid" inverse="true">
+            <key>
+                <column name="vpnID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.flnoc.LeasedLine.Model.Lline"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -20,6 +20,15 @@
         <property name="deviceSnmprw">
             <column name="deviceSNMPRW" sql-type="varchar" length="20"/>
         </property>
+        <property name="deviceUserName">
+            <column name="deviceUserName" sql-type="varchar" length="20"/>
+        </property>
+        <property name="devicePassword">
+            <column name="devicePassword" sql-type="varchar" length="20"/>
+        </property>
+        <property name="deviceEnablePassword">
+            <column name="deviceEnablePassword" sql-type="varchar" length="20"/>
+        </property>
         <property name="deviceType">
             <column name="deviceType" sql-type="varchar" length="10" not-null="true"/>
         </property>
@@ -41,5 +50,11 @@
         <many-to-one name="commRoomByCommRoomId" class="com.flnoc.LeasedLine.Model.CommRoom">
             <column name="commRoomID" not-null="true"/>
         </many-to-one>
+        <set name="llinesByDeviceId" inverse="true">
+            <key>
+                <column name="deviceID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.flnoc.LeasedLine.Model.Lline"/>
+        </set>
     </class>
 </hibernate-mapping>

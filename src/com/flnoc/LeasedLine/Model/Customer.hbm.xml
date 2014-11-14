@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.flnoc.LeasedLine.Model.Customer" table="customer" schema="" catalog="lline">
+        <id name="customerId">
+            <column name="CustomerID" sql-type="int" not-null="true"/>
+        </id>
+        <property name="customerName">
+            <column name="CustomerName" sql-type="varchar" length="100" not-null="true"/>
+        </property>
+        <property name="customerPhone">
+            <column name="CustomerPhone" sql-type="varchar" length="20"/>
+        </property>
+        <property name="customerManager">
+            <column name="CustomerManager" sql-type="varchar" length="20"/>
+        </property>
+        <property name="customerMemo">
+            <column name="CustomerMemo" sql-type="mediumtext" length="16777215"/>
+        </property>
+        <set name="llinesByCustomerId" inverse="true">
+            <key>
+                <column name="customerID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.flnoc.LeasedLine.Model.Lline"/>
+        </set>
+    </class>
+</hibernate-mapping>

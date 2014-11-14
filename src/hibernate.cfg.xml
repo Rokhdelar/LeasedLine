@@ -6,17 +6,23 @@
     <session-factory>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="show_sql">true</property>
-        <property name="connection.url">jdbc:mysql://61.128.177.92:3306/lline</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">info</property>
         <property name="connection.password">fldx72228501</property>
+        <property name="connection.url">jdbc:mysql://61.128.177.92:3306/lline</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <mapping resource="com/flnoc/LeasedLine/Model/CommRoom.hbm.xml"/>
-        <mapping class="com.flnoc.LeasedLine.Model.CommRoom"/>
-        <mapping resource="com/flnoc/LeasedLine/Model/Device.hbm.xml"/>
-        <mapping class="com.flnoc.LeasedLine.Model.Device"/>
-        <mapping class="com.flnoc.LeasedLine.Model.SubStation"/>
+        <mapping resource="com/flnoc/LeasedLine/Model/Customer.hbm.xml"/>
+        <mapping resource="com/flnoc/LeasedLine/Model/Lline.hbm.xml"/>
+        <mapping resource="com/flnoc/LeasedLine/Model/Vpn.hbm.xml"/>
         <mapping resource="com/flnoc/LeasedLine/Model/SubStation.hbm.xml"/>
+
+        <mapping class="com.flnoc.LeasedLine.Model.Vpn"/>
+        <mapping class="com.flnoc.LeasedLine.Model.CommRoom"/>
+        <mapping class="com.flnoc.LeasedLine.Model.Customer"/>
+        <mapping class="com.flnoc.LeasedLine.Model.Device"/>
+        <mapping class="com.flnoc.LeasedLine.Model.Lline"/>
+        <mapping class="com.flnoc.LeasedLine.Model.SubStation"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

@@ -41,4 +41,21 @@ public class MainAppWindowController {
 
         subStationStage.showAndWait();
     }
+    @FXML
+    private void handleVPN() throws IOException{
+        FXMLLoader fxmlLoader=new FXMLLoader();
+        fxmlLoader.setLocation(MainApp.class.getResource("View/VPN.FXML"));
+        Parent root=fxmlLoader.load();
+
+        Stage vpnStage =new Stage();
+        vpnStage.setTitle("VPN信息管理...");
+        vpnStage.initModality(Modality.WINDOW_MODAL);
+        vpnStage.initOwner(mainAppStage);
+        vpnStage.setScene(new Scene(root));
+
+        VPNController vpnController=fxmlLoader.getController();
+        vpnController.setVpnStage(vpnStage);
+
+        vpnStage.showAndWait();
+    }
 }

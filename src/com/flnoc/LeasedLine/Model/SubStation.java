@@ -135,7 +135,6 @@ public class SubStation {
         return result;
     }
 
-    @OneToMany(mappedBy = "subStationBySubId")
     public Collection<CommRoom> getCommRoomsBySubId() {
         return commRoomsBySubId;
     }

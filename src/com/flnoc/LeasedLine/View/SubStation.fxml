@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flnoc.LeasedLine.View.SubStationController">
    <children>
       <SplitPane dividerPositions="0.6555183946488294" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -54,7 +53,14 @@
                         <Label fx:id="subMemoLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <Button layoutX="177.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleClose" text="  关  闭  " AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="25.0" />
+                  <HBox layoutX="48.0" layoutY="226.0" spacing="5.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="5.0">
+                     <children>
+                        <Button layoutX="48.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleNew" text="  新增  " />
+                        <Button layoutX="100.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleEdit" text="  编辑  " />
+                        <Button layoutX="131.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleDeleteSubStation" text="  删除" />
+                        <Button layoutX="186.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleClose" text="  关闭  " AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="14.0" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
         </items>

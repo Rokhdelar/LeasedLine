@@ -25,6 +25,9 @@
                         <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleVPN" text="VPN信息管理..." />
+                  <MenuItem mnemonicParsing="false" text="客户信息管理..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" onAction="#handleExit" text="退出">
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />

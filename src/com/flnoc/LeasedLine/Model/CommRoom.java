@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by Rokhdelar on 2014-11-11.
+ * Created by Rokhdelar on 2014-11-14.
  */
 @Entity
 public class CommRoom {

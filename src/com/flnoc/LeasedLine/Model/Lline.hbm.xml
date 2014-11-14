@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.flnoc.LeasedLine.Model.Lline" table="lline" schema="" catalog="lline">
+        <id name="llineId">
+            <column name="llineID" sql-type="int" not-null="true"/>
+        </id>
+        <property name="llineNumber">
+            <column name="llineNumber" sql-type="varchar" length="20" not-null="true"/>
+        </property>
+        <property name="llineName">
+            <column name="llineName" sql-type="varchar" length="200" not-null="true"/>
+        </property>
+        <property name="llineOpticalNumber">
+            <column name="llineOpticalNumber" sql-type="varchar" length="20"/>
+        </property>
+        <property name="llinePhyPort">
+            <column name="llinePhyPort" sql-type="varchar" length="20" not-null="true"/>
+        </property>
+        <property name="llineSubPort">
+            <column name="llineSubPort" sql-type="varchar" length="10"/>
+        </property>
+        <property name="llineOutVlan">
+            <column name="llineOutVLAN" sql-type="int" not-null="true"/>
+        </property>
+        <property name="llineInVlan">
+            <column name="llineInVLAN" sql-type="int"/>
+        </property>
+        <property name="llineIp">
+            <column name="llineIP" sql-type="varchar" length="45"/>
+        </property>
+        <property name="llineMask">
+            <column name="llineMask" sql-type="varchar" length="15"/>
+        </property>
+        <property name="llineGateway">
+            <column name="llineGateway" sql-type="varchar" length="15"/>
+        </property>
+        <property name="llineBandwidth">
+            <column name="llineBandwidth" sql-type="varchar" length="10" not-null="true"/>
+        </property>
+        <property name="llineAddress">
+            <column name="llineAddress" sql-type="varchar" length="100"/>
+        </property>
+        <property name="llineOdf">
+            <column name="llineODF" sql-type="varchar" length="30"/>
+        </property>
+        <property name="llineContact">
+            <column name="llineContact" sql-type="varchar" length="20"/>
+        </property>
+        <property name="llinePhone">
+            <column name="llinePhone" sql-type="varchar" length="20"/>
+        </property>
+        <property name="llineLineNumber">
+            <column name="llineLineNumber" sql-type="varchar" length="30"/>
+        </property>
+        <property name="llineMemo">
+            <column name="llineMemo" sql-type="mediumtext" length="16777215"/>
+        </property>
+        <many-to-one name="customerByCustomerId" class="com.flnoc.LeasedLine.Model.Customer"/>
+        <many-to-one name="deviceByDeviceId" class="com.flnoc.LeasedLine.Model.Device"/>
+        <many-to-one name="vpnByVpnId" class="com.flnoc.LeasedLine.Model.Vpn"/>
+    </class>
+</hibernate-mapping>
