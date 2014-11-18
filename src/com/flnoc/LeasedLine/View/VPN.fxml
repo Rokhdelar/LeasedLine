@@ -46,8 +46,8 @@
                   </GridPane>
                   <HBox layoutX="471.0" layoutY="120.0" spacing="10.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0">
                      <children>
-                        <Button layoutX="456.0" layoutY="120.0" mnemonicParsing="false" text="  新增  " />
-                        <Button layoutX="524.0" layoutY="120.0" mnemonicParsing="false" text="  编辑  " />
+                        <Button layoutX="456.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleNew" text="  新增  " />
+                        <Button layoutX="524.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleEdit" text="  编辑  " />
                         <Button layoutX="592.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleDelete" text="  删除  " />
                         <Button layoutX="662.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleClose" text="  关闭  " />
                      </children>

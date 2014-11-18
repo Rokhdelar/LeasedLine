@@ -1,5 +1,8 @@
 package com.flnoc.LeasedLine.Model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -9,11 +12,18 @@ import java.util.Collection;
 @Entity
 public class Customer {
     private int customerId;
-    private String customerName;
-    private String customerPhone;
-    private String customerManager;
-    private String customerMemo;
+    private StringProperty customerName;
+    private StringProperty customerPhone;
+    private StringProperty customerManager;
+    private StringProperty customerMemo;
     private Collection<Lline> llinesByCustomerId;
+
+    public Customer() {
+        this.customerName=new SimpleStringProperty();
+        this.customerPhone=new SimpleStringProperty();
+        this.customerManager=new SimpleStringProperty();
+        this.customerMemo=new SimpleStringProperty();
+    }
 
     @Id
     @Column(name = "CustomerID", nullable = false, insertable = true, updatable = true)
@@ -28,41 +38,55 @@ public class Customer {
     @Basic
     @Column(name = "CustomerName", nullable = false, insertable = true, updatable = true, length = 100)
     public String getCustomerName() {
-        return customerName;
+        return customerName.get();
     }
 
     public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+        this.customerName.set(customerName);
+    }
+
+    public StringProperty customerNameProperty(){
+        return this.customerName;
     }
 
     @Basic
     @Column(name = "CustomerPhone", nullable = true, insertable = true, updatable = true, length = 20)
     public String getCustomerPhone() {
-        return customerPhone;
+        return customerPhone.get();
     }
 
     public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+        this.customerPhone.set(customerPhone);
     }
 
+    public StringProperty customerPhoneProperty(){
+        return this.customerPhone;
+    }
     @Basic
     @Column(name = "CustomerManager", nullable = true, insertable = true, updatable = true, length = 20)
     public String getCustomerManager() {
-        return customerManager;
+        return customerManager.get();
     }
 
     public void setCustomerManager(String customerManager) {
-        this.customerManager = customerManager;
+        this.customerManager.set(customerManager);
+    }
+    public StringProperty customerManagerProperty(){
+        return this.customerManager;
     }
 
     @Basic
     @Column(name = "CustomerMemo", nullable = true, insertable = true, updatable = true, length = 16777215)
     public String getCustomerMemo() {
-        return customerMemo;
+        return customerMemo.get();
     }
 
     public void setCustomerMemo(String customerMemo) {
-        this.customerMemo = customerMemo;
+        this.customerMemo.set(customerMemo);
+    }
+
+    public StringProperty customerMemoProperty(){
+        return this.customerMemo;
     }
 
     @Override

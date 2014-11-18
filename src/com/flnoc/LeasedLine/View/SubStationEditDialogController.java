@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 /**
  * Created by Rokhdelar on 2014-11-14.
  */
@@ -16,7 +18,7 @@ public class SubStationEditDialogController {
     @FXML
     private TextField subPhoneField;
     @FXML
-    private TextField subMemoTextArea;
+    private TextArea subMemoTextArea;
 
     private Stage editDialogStage;
     private SubStation subStation;

@@ -4,7 +4,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flnoc.LeasedLine.View.VPNEditDialogController">
    <children>
       <GridPane prefHeight="156.0" prefWidth="544.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -21,15 +20,15 @@
             <Label text="VPN名称：" />
             <Label text="VPN主端专线号：" GridPane.rowIndex="1" />
             <Label text="备注：" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="vpnNameTextField" GridPane.columnIndex="1" />
+            <TextField fx:id="vpnMainNumberTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea fx:id="vpnMemoTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <HBox layoutX="380.0" layoutY="203.0" spacing="10.0" AnchorPane.bottomAnchor="23.0" AnchorPane.rightAnchor="44.0">
          <children>
-            <Button layoutX="380.0" layoutY="203.0" mnemonicParsing="false" text="  保存  " />
-            <Button layoutX="452.0" layoutY="203.0" mnemonicParsing="false" text="  取消  " />
+            <Button layoutX="380.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleSave" text="  保存  " />
+            <Button layoutX="452.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleCancel" text="  取消  " />
          </children>
       </HBox>
    </children>

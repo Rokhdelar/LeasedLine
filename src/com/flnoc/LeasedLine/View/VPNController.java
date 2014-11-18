@@ -73,6 +73,27 @@ public class VPNController {
         vpnTableView.getItems().remove(selectedIndex);
     }
 
+    @FXML
+    private void handleEdit(){
+        Vpn vpn=vpnTableView.getSelectionModel().getSelectedItem();
+        if (showEditVPNDialog(vpn)){
+            Transaction transaction=session.beginTransaction();
+            session.update(vpn);
+            transaction.commit();
+        }
+    }
+
+    @FXML
+    private void handleNew(){
+        Vpn vpn=new Vpn();
+        if (showEditVPNDialog(vpn)){
+            this.vpns.add(vpn);
+            Transaction transaction=session.beginTransaction();
+            session.save(vpn);
+            transaction.commit();
+        }
+    }
+
     private boolean showEditVPNDialog(Vpn vpn){
         try {
             FXMLLoader fxmlLoader=new FXMLLoader();
@@ -86,6 +107,11 @@ public class VPNController {
             vpnEditDialogStage.setScene(new Scene(root));
 
             VPNEditDialogController vpnEditDialogController=fxmlLoader.getController();
+            vpnEditDialogController.setVpnEditDialogStage(this.vpnStage);
+            vpnEditDialogController.setVpn(vpn);
+
+            vpnEditDialogStage.showAndWait();
+            return vpnEditDialogController.isSaved();
 
         }catch (Exception e){
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.flnoc.LeasedLine.View;
 
 import com.flnoc.LeasedLine.MainApp;
+import com.flnoc.LeasedLine.View.Customer.CustomerController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,5 +58,23 @@ public class MainAppWindowController {
         vpnController.setVpnStage(vpnStage);
 
         vpnStage.showAndWait();
+    }
+
+    @FXML
+    private void handleCustomer() throws IOException{
+        FXMLLoader fxmlLoader=new FXMLLoader();
+        fxmlLoader.setLocation(MainApp.class.getResource("View/Customer/Customer.fxml"));
+        Parent root=fxmlLoader.load();
+
+        Stage customerStage=new Stage();
+        customerStage.setTitle("客户信息管理...");
+        customerStage.initOwner(mainAppStage);
+        customerStage.initModality(Modality.WINDOW_MODAL);
+        customerStage.setScene(new Scene(root));
+
+        CustomerController customerController=fxmlLoader.getController();
+        customerController.setCustomerStage(customerStage);
+
+        customerStage.showAndWait();
     }
 }
